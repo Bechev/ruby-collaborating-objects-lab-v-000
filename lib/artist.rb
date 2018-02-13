@@ -17,14 +17,17 @@ class Artist
     @songs << new_song
   end
 
-  def self.find_or_create_by_name(artist_name)
-    artist_match = self.all.detect { |artist| artist_name == artist.name
-    }
-    if not artist_match
-      artist_match = Artist.new(artist_name)
-      artist_match.save
-    end
-    artist_match
+  def self.find_or_create_by_name(name)
+    self.find(name) ? self.find(name) : self.create(name)
+  end
+
+  def self.find(name)
+    self.all.find {|artist| artist.name == name }
+  end
+
+
+  def self.create(name)
+    self.new(name).tap {|artist| artist.save}
   end
 
   def save
