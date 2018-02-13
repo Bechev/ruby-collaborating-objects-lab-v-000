@@ -22,7 +22,7 @@ class Artist
     }
     if not artist_match
       artist_match = Artist.new(artist_name)
-      artist_name.save
+      artist_match.save
     end
   end
 
