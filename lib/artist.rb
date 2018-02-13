@@ -24,6 +24,7 @@ class Artist
       artist_match = Artist.new(artist_name)
       artist_match.save
     end
+    artist_match
   end
 
   def save
